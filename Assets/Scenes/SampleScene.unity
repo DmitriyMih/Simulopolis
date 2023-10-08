@@ -428,7 +428,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252075065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 1057931766}
   m_Follow: {fileID: 1057931766}
   m_Lens:
-    FieldOfView: 57.5
+    FieldOfView: 45
     OrthographicSize: 45
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -492,7 +492,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 26.231289
+  field of view: 45
   orthographic: 0
   orthographic size: 45
   m_Depth: -1
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252075065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -558,10 +558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startLevel: 1
   fovSizeTime: 1
-  fovSizeLevelItem:
-  - 45
-  - 57.5
-  - 70
 --- !u!114 &252075073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,11 +571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultResolution: {x: 1080, y: 1920}
-  WidthOrHeight: 0
-  componentCamera: {fileID: 0}
-  initialOrtoSize: 0
-  targetAspect: 0
-  initialFovSize: 0
+  WidthOrHeight: 0.5
+  initialSize: 0
+  initialFov: 0
 --- !u!1001 &379996254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1625,7 +1619,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.2705981, y: 0.65328145, z: -0.270598, w: 0.65328157}
+  m_LocalRotation: {x: 0.27059805, y: 0.65328145, z: -0.27059805, w: 0.65328157}
   m_LocalPosition: {x: -6, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1641,7 +1635,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -1655,7 +1649,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 1057931766}
   m_Follow: {fileID: 1057931766}
   m_Lens:
-    FieldOfView: 45
+    FieldOfView: 40.00857
     OrthographicSize: 3
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -1679,7 +1673,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -1719,11 +1713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultResolution: {x: 1080, y: 1920}
-  WidthOrHeight: 0
-  componentCamera: {fileID: 0}
-  initialOrtoSize: 0
-  targetAspect: 0
-  initialFovSize: 0
+  WidthOrHeight: 0.5
+  initialSize: 0
+  initialFov: 0
 --- !u!1001 &1048023623
 PrefabInstance:
   m_ObjectHideFlags: 0
