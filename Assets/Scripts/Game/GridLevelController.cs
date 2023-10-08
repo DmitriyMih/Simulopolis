@@ -9,10 +9,17 @@ public class GridLevelController : MonoBehaviour
 
     public Action<int> OnLevelChanged;
 
+    private void Awake()
+    {
+        ChangeLevel();
+    }
+
+#if UNITY_EDITOR
     private void OnValidate()
     {
         ChangeLevel();
     }
+#endif
 
     private void ChangeLevel()
     {

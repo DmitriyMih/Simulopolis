@@ -25,12 +25,19 @@ namespace CameraSystem
 
         Camera tempCamera;
 
-        private void OnValidate()
+        private void Awake()
         {
-            OnCameraChanged();
+            SetCamera();
         }
 
-        private void OnCameraChanged()
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            SetCamera();
+        }
+#endif
+
+        private void SetCamera()
         {
             if (cameraItems.Exists(x => x.CameraType == cameraType))
             {

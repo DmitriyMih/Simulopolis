@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 252075069}
   - component: {fileID: 252075068}
   - component: {fileID: 252075071}
+  - component: {fileID: 252075072}
   m_Layer: 0
   m_Name: Scale Camera
   m_TagString: MainCamera
@@ -440,7 +441,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 1057931766}
   m_Follow: {fileID: 1057931766}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 62.5
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -490,7 +491,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60
+  field of view: 62.5
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -542,6 +543,23 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &252075072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252075065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f4e55bca53336248978c428b190fe5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLevel: 1
+  fovSizeTime: 0.5
+  fovSizeLevelItem:
+  - 45
+  - 62.5
 --- !u!1001 &379996254
 PrefabInstance:
   m_ObjectHideFlags: 0
