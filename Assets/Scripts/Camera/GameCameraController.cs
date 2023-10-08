@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,9 @@ namespace CameraSystem
 {
     [RequireComponent(typeof(Camera))]
     [RequireComponent(typeof(CinemachineVirtualCamera))]
-    [RequireComponent(typeof(CameraConstantWidth))]
     public class GameCameraController : MonoBehaviour
     {
         private CinemachineVirtualCamera virtualCamera;
-        private CameraConstantWidth cameraConstant;
 
         [SerializeField] private int startLevel;
         public int StartLevel
@@ -24,15 +23,16 @@ namespace CameraSystem
             }
         }
 
+        [Serializable]
         private class CameraInfo
         {
-            public float orthoSize;
-            public float perspectiveSize;
+            public float OrthoSize;
+            public float PerspectiveSize;
 
             public CameraInfo(float orthoSize, float perspectiveSize)
             {
-                this.orthoSize = orthoSize;
-                this.perspectiveSize = perspectiveSize;
+                this.OrthoSize = orthoSize;
+                this.PerspectiveSize = perspectiveSize;
             }
         }
 
@@ -41,6 +41,7 @@ namespace CameraSystem
 
         private void Awake()
         {
+            virtualCamera = GetComponent<CinemachineVirtualCamera>();
             Initialization();
         }
 
@@ -53,23 +54,34 @@ namespace CameraSystem
 
         private void Initialization()
         {
-            virtualCamera = GetComponent<CinemachineVirtualCamera>();
             InitializationLevel(StartLevel);
         }
 
-        bool isActiveField = false;
         private void InitializationLevel(int level)
         {
-            //virtualCamera.m_Lens.FieldOfView = fovSizeLevelItem[level];
+            if (gameObject.activeSelf)
+                StartCoroutine(SetField(fovSizeLevelItem[level].OrthoSize, fovSizeLevelItem[level].PerspectiveSize));
 
-            isActiveField = true;
+            //if (virtualCamera == null) return;
+            //if (virtualCamera.m_Lens.Orthographic)
+            //    DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].orthoSize, fovSizeTime);
+            ////.OnComplete(() => isActiveField = false);
+            //else
+            //    DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].perspectiveSize, fovSizeTime);
+            ////.OnComplete(() => isActiveField = false);
+        }
 
-            if (virtualCamera.m_Lens.Orthographic)
-                DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].orthoSize, fovSizeTime).OnComplete(() => isActiveField = false);
-            else
-                DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].perspectiveSize, fovSizeTime).OnComplete(() => isActiveField = false);
+        private IEnumerator SetField(float targetOrthoSize, float targetPerspectiveSize)
+        {
+            float time = 0f;
 
-            cameraConstant.SetSize(fovSizeLevelItem[level].orthoSize, fovSizeLevelItem[level].perspectiveSize);
+            while (time < 1f)
+            {
+                time += Time.deltaTime;
+            }
+
+            Debug.Log("Set Field");
+            yield return null;
         }
     }
 }
