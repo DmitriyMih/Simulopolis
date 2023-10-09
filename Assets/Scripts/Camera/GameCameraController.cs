@@ -37,13 +37,17 @@ namespace CameraSystem
         }
 
         [SerializeField] private float fovSizeTime = 0.5f;
-        [SerializeField] private List<CameraInfo> fovSizeLevelItem = new() { new(3f, 45f), new(5.5f, 80f) };
+        [SerializeField] private List<CameraInfo> fovSizeLevelItem = new() { new(3f, 45f), new(5.5f, 80f), new(7.5f, 75f) };
 
         private void Awake()
         {
             virtualCamera = GetComponent<CinemachineVirtualCamera>();
+        }
+        private void Start()
+        {
             Initialization();
         }
+
 
 #if UNITY_EDITOR
         private void OnValidate()
@@ -59,29 +63,12 @@ namespace CameraSystem
 
         private void InitializationLevel(int level)
         {
-            if (gameObject.activeSelf)
-                StartCoroutine(SetField(fovSizeLevelItem[level].OrthoSize, fovSizeLevelItem[level].PerspectiveSize));
+            if (virtualCamera == null) return;
 
-            //if (virtualCamera == null) return;
-            //if (virtualCamera.m_Lens.Orthographic)
-            //    DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].orthoSize, fovSizeTime);
-            ////.OnComplete(() => isActiveField = false);
-            //else
-            //    DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].perspectiveSize, fovSizeTime);
-            ////.OnComplete(() => isActiveField = false);
-        }
-
-        private IEnumerator SetField(float targetOrthoSize, float targetPerspectiveSize)
-        {
-            float time = 0f;
-
-            while (time < 1f)
-            {
-                time += Time.deltaTime;
-            }
-
-            Debug.Log("Set Field");
-            yield return null;
+            if (virtualCamera.m_Lens.Orthographic)
+                DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].OrthoSize, fovSizeTime);
+            else
+                DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].PerspectiveSize, fovSizeTime);
         }
     }
 }

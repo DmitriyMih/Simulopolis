@@ -32,7 +32,7 @@ namespace CameraSystem
         private void UpdateSize()
         {
             if (virtualCamera != null)
-                SupportConstantMetods.UpdateSize(virtualCamera, initialOrthoSize, initialFovSize, WidthOrHeight);
+                SupportConstantMetods.UpdateSize(componentCamera, virtualCamera, initialOrthoSize, initialFovSize, WidthOrHeight);
             else
                 SupportConstantMetods.UpdateSize(componentCamera, initialOrthoSize, initialFovSize, WidthOrHeight);
         }

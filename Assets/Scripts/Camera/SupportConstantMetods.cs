@@ -30,7 +30,7 @@ namespace CameraSystem
             }
         }
 
-        public static void UpdateSize(CinemachineVirtualCamera virtualCamera, float orthoSize, float perspectiveSize, float WidthOrHeight)
+        public static void UpdateSize(Camera camera, CinemachineVirtualCamera virtualCamera, float orthoSize, float perspectiveSize, float WidthOrHeight)
         {
             if (virtualCamera == null)
                 return;
@@ -41,13 +41,13 @@ namespace CameraSystem
             if (virtualCamera.m_Lens.Orthographic)
             {
                 //horizontalFov = CalcVerticalFov(orthoSize, 1 / targetAspect);
-                float constantWidthSize = orthoSize * (targetAspect / virtualCamera.m_Lens.Aspect);
+                float constantWidthSize = orthoSize * (targetAspect / camera.aspect);
                 virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(constantWidthSize, orthoSize, WidthOrHeight);
             }
             else
             {
                 horizontalFov = CalcVerticalFov(perspectiveSize, 1 / targetAspect);
-                float constantWidthFov = CalcVerticalFov(horizontalFov, virtualCamera.m_Lens.Aspect);
+                float constantWidthFov = CalcVerticalFov(horizontalFov, camera.aspect);
                 virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(constantWidthFov, perspectiveSize, WidthOrHeight);
             }
         }
