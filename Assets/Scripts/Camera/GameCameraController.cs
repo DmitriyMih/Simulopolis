@@ -37,7 +37,7 @@ namespace CameraSystem
         }
 
         [SerializeField] private float fovSizeTime = 0.5f;
-        [SerializeField] private List<CameraInfo> fovSizeLevelItem = new() { new(3f, 45f), new(5.5f, 80f), new(7.5f, 75f) };
+        [SerializeField] private List<CameraInfo> fovSizeLevelItem = new() { new(3.5f, 45f), new(5.5f, 80f), new(7.5f, 75f) };
 
         private void Awake()
         {
@@ -56,6 +56,7 @@ namespace CameraSystem
         }
 #endif
 
+        [ContextMenu("Inititalization")]
         private void Initialization()
         {
             InitializationLevel(StartLevel);
@@ -66,7 +67,7 @@ namespace CameraSystem
             if (virtualCamera == null) return;
 
             if (virtualCamera.m_Lens.Orthographic)
-                DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].OrthoSize, fovSizeTime);
+                DOTween.To(x => virtualCamera.m_Lens.OrthographicSize = x, virtualCamera.m_Lens.OrthographicSize, fovSizeLevelItem[level].OrthoSize, fovSizeTime);
             else
                 DOTween.To(x => virtualCamera.m_Lens.FieldOfView = x, virtualCamera.m_Lens.FieldOfView, fovSizeLevelItem[level].PerspectiveSize, fovSizeTime);
         }
