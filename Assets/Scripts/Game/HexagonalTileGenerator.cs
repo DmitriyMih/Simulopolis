@@ -10,8 +10,9 @@ public class HexagonalTileGenerator : MonoBehaviour
     public GameObject hexPrefab;
 
     public int radius = 3;
-    public float hexSize = 1f;
-    public float offset = 0.1f;
+
+    [SerializeField] private float xOffcet = 0.5f;
+    [SerializeField] private float yOffcet = 0.5f;
 
     [ContextMenu("Generate Old")]
     private void GenerateHexagonOld()
@@ -49,34 +50,12 @@ public class HexagonalTileGenerator : MonoBehaviour
         //  r1 - left border
         //  r2 - right border
 
-        //for (int rad = 0; rad <= radius; rad++)
-        //{
-        //}
+        for (int rad = 1; rad <= radius; rad++)
+        {
+            CreateCircle(rad, content.transform);
+        }
 
-        
         CreateCircle(currentLayer, content.transform);
-            //break;
-            //for (int q = -rad; q <= rad; q++)
-            //{
-            //    int r1 = Mathf.Max(-radius, -q - radius);
-            //    int r2 = Mathf.Min(radius, -q + radius);
-
-            //    for (int r = r1; r <= r2; r++)
-            //    {
-            //        if (q == -rad || q == rad)
-            //            continue;
-
-            //        if (r == r1 || r == r2)
-            //            continue;
-
-            //        float xPos = tileSize * Mathf.Sqrt(3f) * (q + 0.5f * r);
-            //        float zPos = tileSize * 1.5f * r;
-
-            //        Vector3 position = new Vector3(xPos, 0f, zPos);
-            //        CreateHexagon(position, content.transform, $"Tile {q}|{r}");
-            //    }
-            //}
-        //}
     }
 
     private void CreateCircle(int currentLayer, Transform parent)
@@ -89,33 +68,37 @@ public class HexagonalTileGenerator : MonoBehaviour
 
             if (currentLine == -currentLayer || currentLine == currentLayer)
             {
-                for (int tileInLine = leftBorder; tileInLine <= rightBorder; tileInLine++)                
+                for (int tileInLine = leftBorder; tileInLine <= rightBorder; tileInLine++)
                     CreateTile(currentLine, tileInLine, parent);
             }
-            else 
+            else
             {
                 CreateTile(currentLine, leftBorder, parent);
                 CreateTile(currentLine, rightBorder, parent);
             }
-
-            //for (int r = r1; r <= r2; r++)
-            //{
-            //    float xPos = tileSize * Mathf.Sqrt(3f) * (q + 0.5f * r);
-            //    float zPos = tileSize * 1.5f * r;
-
-            //    Vector3 position = new Vector3(xPos, 0f, zPos);
-            //    CreateHexagon(position, parent, $"Tile {q}|{r} / {r1}|{r2}");
-            //}
         }
     }
 
-    private void CreateTile(int x, int y, Transform parent)
+    //for (int r = r1; r <= r2; r++)
+    //{
+    //    float xPos = tileSize * Mathf.Sqrt(3f) * (q + 0.5f * r);
+    //    float zPos = tileSize * 1.5f * r;
+
+    //    Vector3 position = new Vector3(xPos, 0f, zPos);
+    //    CreateHexagon(position, parent, $"Tile {q}|{r} / {r1}|{r2}");
+    //}
+
+    private void CreateTile(int xIndex, int yIndex, Transform parent)
     {
-        float xPos = tileSize * Mathf.Sqrt(3f) * (x + 0.5f * y);
-        float zPos = tileSize * 1.5f * y;
+        float xPos = tileSize * Mathf.Sqrt(3f) * (xIndex + 0.5f * yIndex);
+        xPos /= 2f;
+
+        //float xPos = tileSize * xIndex + (xIndex %2 == 0 ? -0.5f : 0f);
+
+        float zPos = tileSize * yIndex * 0.85f; /*1.5f * yIndex / 2f;*/
 
         Vector3 position = new Vector3(xPos, 0f, zPos);
-        CreateHexagon(position, parent, $"Tile {x}|{y}");
+        CreateHexagon(position, parent, $"Tile {xIndex}|{yIndex}");
     }
 
     private void CreateHexagon(Vector3 position, Transform parent, string name, bool isNew = true)
