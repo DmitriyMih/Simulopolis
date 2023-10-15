@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6067848050607886818
+--- !u!1 &6729331155179427366
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,36 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4398435035760713650}
+  - component: {fileID: 6729331155179427368}
+  - component: {fileID: 6729331155179427367}
   m_Layer: 0
-  m_Name: Hex Item
+  m_Name: Hex - None - Forsest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4398435035760713650
+--- !u!4 &6729331155179427368
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6067848050607886818}
+  m_GameObject: {fileID: 6729331155179427366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6755593788565652846}
+  - {fileID: 945438156840423787}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &6506023329528799877
+--- !u!114 &6729331155179427367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729331155179427366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11dd5a665bd10b4691a104f54537e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hexData:
+    BiomeType: 1
+    StructureType: 0
+--- !u!1001 &762348053183051392
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4398435035760713650}
+    m_TransformParent: {fileID: 6729331155179427368}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 08f7a87e7daf564468ae4563cb018771, type: 3}
       propertyPath: m_RootOrder
@@ -87,14 +103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 08f7a87e7daf564468ae4563cb018771, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08f7a87e7daf564468ae4563cb018771, type: 3}
---- !u!4 &6755593788565652846 stripped
+--- !u!4 &945438156840423787 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08f7a87e7daf564468ae4563cb018771, type: 3}
-  m_PrefabInstance: {fileID: 6506023329528799877}
+  m_PrefabInstance: {fileID: 762348053183051392}
   m_PrefabAsset: {fileID: 0}

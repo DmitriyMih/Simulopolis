@@ -9,10 +9,21 @@ public class HexagonalTileGenerator : MonoBehaviour
     public GameObject oldHexPrefab;
     public GameObject hexPrefab;
 
-    public int radius = 3;
+    private const int maxRadius = 10;
 
-    [SerializeField] private float xOffcet = 0.5f;
-    [SerializeField] private float yOffcet = 0.5f;
+    [SerializeField, Range(0, maxRadius)] private int currentLayer;
+    [SerializeField, Range(0, maxRadius)] private int radius = 3;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        currentLayer = Mathf.Clamp(currentLayer, 0, Mathf.Min(maxRadius, radius));        
+        radius = Mathf.Clamp(radius, currentLayer, 20);
+    }
+#endif
+
+    //[SerializeField] private float xOffcet = 0.5f;
+    //[SerializeField] private float yOffcet = 0.5f;
 
     [ContextMenu("Generate Old")]
     private void GenerateHexagonOld()
@@ -39,7 +50,6 @@ public class HexagonalTileGenerator : MonoBehaviour
         }
     }
 
-    public int currentLayer;
 
     [ContextMenu("Generate New")]
     private void GenerateHexagon()
@@ -50,12 +60,12 @@ public class HexagonalTileGenerator : MonoBehaviour
         //  r1 - left border
         //  r2 - right border
 
-        for (int rad = 1; rad <= radius; rad++)
+        for (int rad = currentLayer; rad <= radius; rad++)
         {
             CreateCircle(rad, content.transform);
         }
 
-        CreateCircle(currentLayer, content.transform);
+        //CreateCircle(currentLayer, content.transform);
     }
 
     private void CreateCircle(int currentLayer, Transform parent)

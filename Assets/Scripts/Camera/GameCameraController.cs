@@ -37,7 +37,7 @@ namespace CameraSystem
         }
 
         [SerializeField] private float fovSizeTime = 0.5f;
-        [SerializeField] private List<CameraInfo> fovSizeLevelItem = new() { new(3.5f, 45f), new(5.5f, 80f), new(7.5f, 75f) };
+        [SerializeField] private List<CameraInfo> fovSizeLevelItem = new() { new(3.5f, 45f), new(5.5f, 70f), new(7.5f, 75f) };
 
         private void Awake()
         {
