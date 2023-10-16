@@ -38,5 +38,18 @@ namespace TileGenerator
         {
             SupportGenerator.GenerateHexagon(transform, currentLayer, radius);
         }
+
+        public Transform target;
+
+        [ContextMenu("Text")]
+        private void Test()
+        {
+            Debug.Log(SupportGenerator.GetIndexByPosition(target.position));
+        }
+
+        private void CreateTiles()
+        {
+
+        }
     }
 }

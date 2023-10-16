@@ -8,9 +8,9 @@ namespace TileSystem
     [RequireComponent(typeof(TileCreator))]
     public sealed class HexPool : MonoBehaviour
     {
-        public static HexPool Instance;
-
         [SerializeField] private List<BiomePool> biomePools = new();
+
+        public static HexPool Instance;
 
         private void Awake()
         {
