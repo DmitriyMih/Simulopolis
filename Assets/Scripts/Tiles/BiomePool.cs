@@ -9,14 +9,14 @@ namespace TileSystem
     public class BiomePool : ScriptableObject
     {
         public BiomeType BiomeType;
-        public List<Hex> BiomTilesPool = new();
+        public List<Hex> BiomeTilesPool = new();
 
         private void OnValidate()
         {
-            for (int i = 0; i < BiomTilesPool.Count; i++)
+            for (int i = 0; i < BiomeTilesPool.Count; i++)
             {
-                if (BiomTilesPool[i] != null)
-                    BiomTilesPool[i].ChangeType(BiomeType);
+                if (BiomeTilesPool[i] != null)
+                    BiomeTilesPool[i].ChangeType(BiomeType);
             }
 
             AssetDatabase.Refresh();

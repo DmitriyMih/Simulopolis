@@ -16,8 +16,8 @@ namespace TileSystem
             string outName = $"Hex - {hexData.StructureType} - {hexData.BiomeType}"; 
             
             string assetPath = AssetDatabase.GetAssetPath(GetInstanceID());
-            AssetDatabase.RenameAsset(assetPath, outName);
 
+            AssetDatabase.RenameAsset(assetPath, outName);
             AssetDatabase.SaveAssets();
         }
     }

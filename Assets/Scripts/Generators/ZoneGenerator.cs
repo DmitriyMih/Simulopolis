@@ -12,8 +12,10 @@ namespace TileGenerator
 
         [Space(5)]
         [Header("Generate Settings")]
-        private const int zoneRadius = 4;
-        [SerializeField, Range(0, 5)] private int additionalRadius = 0;
+        [SerializeField, Range(0, maxRadius)] private int currentLayer;
+        [SerializeField, Range(0, maxRadius)] private int radius = 3;
+
+        private const int maxRadius = 10;
 
         [Space(5)]
         [Header("Zone Data")]
@@ -23,10 +25,18 @@ namespace TileGenerator
         [SerializeField] private List<Hex> activeTiles = new();
         [SerializeField] private List<Hex> deactiveTiles = new();
 
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            currentLayer = Mathf.Clamp(currentLayer, 0, Mathf.Min(maxRadius, radius));
+            radius = Mathf.Clamp(radius, currentLayer, 20);
+        }
+#endif
+
         [ContextMenu("Generate")]
         private void Generate()
         {
-
+            SupportGenerator.GenerateHexagon(transform, currentLayer, radius);
         }
     }
 }

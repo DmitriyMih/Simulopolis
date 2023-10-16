@@ -7,6 +7,7 @@ namespace TileSystem
     public enum StructureType
     {
         None,
-        MiddleTower
+        MiddleTower,
+        Forest
     }
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Forest Pool
   m_EditorClassIdentifier: 
   BiomeType: 0
-  BiomTilesPool:
+  BiomeTilesPool:
   - {fileID: 6729331155179427367, guid: 1813c9e7d1a84b240a3ac940cfba2112, type: 3}
   - {fileID: 7108909100401512123, guid: 080caf41adaf3b44290b6e6682a7ac79, type: 3}
