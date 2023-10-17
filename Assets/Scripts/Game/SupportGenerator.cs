@@ -109,8 +109,8 @@ namespace TileGenerator
         {
             int y = (int)(position.z / 0.85f * 0.85f);
             float verticalOffcet = 0f;
-         
-            if (y % 2 == 0)
+
+            if (y % 2 == 0 && position.z != 0)
             {
                 if (position.z > 0)
                     verticalOffcet = 0.5f;
