@@ -107,43 +107,27 @@ namespace TileGenerator
 
         public static Vector2 GetIndexByPosition(Vector3 position, float tileSize = 1f)
         {
-            int x = (int)(position.x / 0.5f * 0.5f);
             int y = (int)(position.z / 0.85f * 0.85f);
-
             float verticalOffcet = 0f;
-            float horizontalOffcet = 0f;
-
-            if (position.z > 0)
+         
+            if (y % 2 == 0)
             {
-                //horizontalOffcet = (y % 2 == 0) ? -0.5f : -1f;
-
-                int steps = (int)(position.z / 0.85f) + 1;
-                x -= (int)(steps * 0.5f);
-
-                Debug.Log($"Step: {steps} | {x}");
-
-                y += 1;
-            }
-            else if (position.z < 0)
-            {
-                int steps = (int)(position.z / 0.85f);
-                x -= (int)(steps * 0.5f);
-
-                y -= 1;
+                if (position.z > 0)
+                    verticalOffcet = 0.5f;
+                else
+                    verticalOffcet = -0.5f;
             }
 
-                //if (y % 2 == 0)
-                //    verticalOffcet = y == 0 ? 0 : (y > 0 ? 0.5f : 1f);
+            int steps = (int)((position.z) / 0.85f);
 
-                //horizontalOffcet = position.x == 0 ? 0 : (position.x > 0 ? 1f : -1f);
-                //x = Mathf.RoundToInt(positionX - horizontalOffcet - verticalOffcet);
+            int x = (int)((position.x - verticalOffcet) / 0.5f * 0.5f);
+            x -= (int)(steps * 0.5f);
 
-                //if (position.y > 0)
-                //else
-                //    x = Mathf.RoundToInt(positionX + verticalOffcet + 1);
+            y += position.z == 0 ? 0 : (position.z > 0 ? 1 : -1);
 
 
-                Vector2 outposition = new Vector2(x, y);
+            Debug.Log($"Step: {steps} | {x} | Pz {position.z} - {verticalOffcet}");
+            Vector2 outposition = new Vector2(x, y);
             return outposition;
         }
 
